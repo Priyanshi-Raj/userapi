@@ -5,10 +5,10 @@ const cookieParser = require("cookie-parser");
 
 
 const User = require("./models/users");
-const userRouter = require("./Routers/users");
+const userRouter = require("./routers/users");
 
 const app = express();
-const port = process.env.port || 9000;
+ const port = process.env.PORT || 4600;
 app.use(express.json());
 
 app.use(userRouter);

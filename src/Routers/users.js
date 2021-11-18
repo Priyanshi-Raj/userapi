@@ -5,9 +5,9 @@ const auth = require('../middleware/auth');
 //to add new user
 router.post("/users", async (req, res) => {
     try {
-      const user = new User(req.body);
-      const createUser = await user.save();
-      res.status(201).send(createUser);
+      const person = new User(req.body);
+      const createPerson = await person.save();
+      res.status(201).send(createPerson);
     } catch (e) {
       res.status(400).send(e);
     }
@@ -15,7 +15,7 @@ router.post("/users", async (req, res) => {
   //to get details
   router.get("/users", async (req, res) => {
     try {
-      const userData = await User.find(res.send(userData));
+      const usersData = await User.find(res.send(usersData));
     } catch (e) {
       res.send(e);
     }
@@ -24,22 +24,22 @@ router.post("/users", async (req, res) => {
   router.get("/users/:id", async (req, res) => {
     try {
       const _id = req.params.id;
-      const usersData = await User.findById(_id);
-      if (!usersData) {
+      const userData = await User.findById(_id);
+      if (!userData) {
         return res.status(404).send();
       } else {
-        res.send(usersData);
+        res.send(userData);
       }
-      res.send(usersData);
+      res.send(userData);
     } catch (e) {
       res.status(500).send(e);
     }
   })
   //updating
-  router.get("/users/:id", async (req, res) => {
+  router.patch("/users/:id", async (req, res) => {
       try {
         const _id = req.params.id;
-        const updateData = await User.findByIdandUpdate(_id, req.body,{new:true});
+        const updateData = await User.findByIdAndUpdate(_id, req.body,{new:true});
       
         res.send(updateData);
       } catch (e) {
@@ -47,7 +47,7 @@ router.post("/users", async (req, res) => {
       }
     })
     //delete
-    router.get("/users/:id", async (req, res) => {
+    router.delete("/users/:id", async (req, res) => {
       try {
         const _id = req.params.id;
         const deleteData = await User.findByIdAndDelete(req.params.id);

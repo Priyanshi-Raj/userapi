@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/usersapi", {
+mongoose.connect("mongodb://localhost:27017/users-api", {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -10,4 +10,4 @@ mongoose.connect("mongodb://localhost:27017/usersapi", {
   })
   .catch((e) => {
     console.log("No connection");
-  });
+  })
